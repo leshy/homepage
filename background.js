@@ -55,7 +55,7 @@ var Object = Backbone.Model.extend({
     },
 
     draw: function(ctx) {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.3)";  
+        ctx.fillStyle = "rgba(0, 0, 0, 0.2)";  
         ctx.beginPath();
         ctx.arc(this.get('x'), this.get('y'), this.get('size'), 0, Math.PI*2, true); 
         ctx.closePath();
@@ -104,7 +104,7 @@ function start() {
         if (objects.length && (health > 0)) { setTimeout(randomwalk,50) } else { console.log('done') }
     }
 
-    setTimeout(randomwalk,1000)
+    randomwalk()
 }
 
 

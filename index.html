@@ -8,6 +8,7 @@
     <script type="text/javascript" src="underscore-min.js"></script>
     <script type="text/javascript" src="backbone-min.js"></script>
     <script type="text/javascript" src="background.js"></script>
+    <script type="text/javascript" src="site.js"></script>
 
     <style> 
 
@@ -18,13 +19,17 @@
     }
 
 
+
     .small {
-        font-size:0.7em;
+        font-size:0.8em;
+    }
+
+    .smaller {
+        font-size:0.6em;
     }
 
     a {
         color:#222266;
-        font-size: 0.8em;
         text-decoration: none;
     }
 
@@ -32,14 +37,18 @@
         text-decoration: underline;
     }
 
+    .gimmespace { 
+    margin: 15px;
+    }
+    
     .link {
         color:#222266;
-        font-size: 0.8em;
         text-decoration: none;
     }
 
     .link:hover {
-        text-decoration: underline;
+    text-decoration: underline;
+    cursor: pointer;
     }
     
     .tab {
@@ -59,6 +68,7 @@
         margin-right: auto;
         padding: 20px;
         width: 400px;
+    height: 550px;
         background-color: white;
         
     }
@@ -73,28 +83,71 @@
         background-attachment:scroll; 
     }
 
+    .tab {
+    position:absolute;
+    top: 20px;
+    right: 20px;
+    width: 400px;
+    }
+    #tab_about {
+    font-size:0.8em;
+    }
+
+    #back {
+    position:absolute;
+    right:30px;
+    bottom:20px;
+    }
+
+
     </style> 
 
   </head>
   <body>
     <canvas id="maincanvas"></canvas>
-    <div class='maindiv' align=center>
-    <div class='tab' id='tab_index'>
+    <div class='maindiv'>
+    <div class='tab' id='tab_index' align=center>
       <img id="bug" src="bug.png">
       <br>
+      <pre id="contact">Javascript is required to decrypt contact details</pre>
       <br>
-      <pre id="contact">
-        Need javascript to display contact details
-      </pre>
-      <br>
+      
       <div class='links'>
+        <span class="gimmespace small link" id="button_about">
+          about
+        </span>
+
+        <span class="gimmespace small">
+          <a href='https://github.com/leshy/'>github</a>
+        </span>
+
+        <span class="gimmespace small">
         <a href='oldsite/'>old site</a>
+        </span>
       </div>
+      
       <br>
-      <div><a href="lesh.asc">pgp key 4096R/96085C00</a></div>
+      <div><span class="small"><a href="lesh.asc">pgp key 4096R/96085C00</a></span></div>
       <br>
-      <a href="index.sig">this page is signed</a>
+      <span class="smaller"><a href="index.sig">this page is signed</a></span>
+      
     </div>
+
+    <div class='tab' id='tab_about' class='small'>
+      hello hello<br><br>
+      my name is Ivan and <br>
+      I like machines and viruses and evolvable programs<br>
+      and things like that.<br>
+      <br>
+      I'm a regular at <a href="http://razmjenavjestina.org">razmjenavjestina</a> <a href='http://hackerspaces.org/wiki/Hacklab_in_mama'>hacklab.</a><br>
+      <br>
+      <br>
+      .. I'm about to write my own blog.<br>
+      until then, you can look at the <a href='http://sysphere.org/gallery/lesh'>random pictures</a> or check out the crappy unupdated <a href='http://lesh.sysphere.org/oldsite/'>old site</a>.
+    </div>
+
+    <div id='back' class='smaller link'>back</div>
+
     </div>
     <script type="text/javascript">
 
@@ -103,10 +156,9 @@
 
       var key="fRQ45LMTrQ5trjvHPQ8WRrU7AfM1EFCxFS6LCTBe";
 
-      var data = "d8e39d482d291b6034cce9663d8dd780a303519888d4ba617cf2d4a2e47dc523bbb557a857e933aa5c790f84892eea1f26eb277db0bf33f8f109f4e0334e57f010b036257c5c55496b53b25cfa8dc501dd3e005924f652e5ba53592a99b56fb9945ac4a8571062c7468853d140bb558d160b8cec5caa80d93fed33ae7e32992a8bc5af2086233532b365da9abdebc8f7013a3407c952ed7d2e9c587f2e01c296dc7c97ba54bbb8b94288ed7bcd44f050b3e9b040ddb4ddb6d019eafcd583375d8f739a1914609586d9b58cce099f91cc";
+      var data = "d8e39d482d291b6034cce9663d8dd780a303519888d4ba617cf2d4a2e47dc523bbb557a857e933aa5c790f84892eea1f26eb277db0bf33f8f109f4e0334e57f010b036257c5c55496b53b25cfa8dc501dd3e005924f652e5ba53592a99b56fb9945ac4a8571062c7468853d140bb558d160b8cec5caa80d93fed33ae7e32992a8bc5af2086233532b365da9abdebc8f7013a3407c952ed7d2e9c587f2e01c296dc7c97ba54bbb8b94288ed7bcd44f050b3e9b040ddb4ddb6d019eafcd583375d8f739a1914609586d9b58cce2383d3d2c5595805d26ce6b52fce21e54982d99f2f6d2389056855178d0c0a1774a9ac6c471a0d741c49238362b16b912319a028ccb9716dcfe0";
 
-
-      //$("#contact").html($.rc4EncryptStr($("#contact").html(),key),key)
+//      $("#contact").html($.rc4EncryptStr($("#contact").html(),key),key)
       $("#contact").html($.rc4DecryptStr(data,key));
 
     </script>
