@@ -70,7 +70,7 @@ function start() {
     resize()
     var ctx = canvas.getContext('2d');
     var x =  $(document).width() / 2
-    var y =  $(document).height() / 2
+    var y =  300
 
     objects = []
     _.times(13, function() { objects.push(new Object({ x: x, y: y })) })
